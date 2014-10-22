@@ -1,0 +1,9 @@
+;
+; file declaring our exported routines
+;
+
+LIBRARY IntelliDump
+EXPORTS
+	GetLDEName
+	DumpProcessRange
+	ShowLDEInfo

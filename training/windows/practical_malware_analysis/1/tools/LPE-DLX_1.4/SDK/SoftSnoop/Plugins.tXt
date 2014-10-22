@@ -1,0 +1,46 @@
+SoftSnoop's Plugin Interface
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+SoftSnoop (SS) has a plugin interface from version 1.2 on.
+It's realized though dlls.
+In the SS path has to be a subdirectory with the
+name: "Plugins". All dlls in this directory are loaded
+on the startup of SS. A log-file will be created in the
+"Plugins" directory to make problems while plugin development
+easier to find.
+To get the API addresses of SS you've to call "GetSSApi" which
+SoftSnoop.exe exports. 
+Example:
+---------------------------------------------------------------
+case DLL_PROCESS_ATTACH:
+	// get "GetSSApi" address of SoftSnoop
+	hSS = GetModuleHandle(NULL);
+	if (!hSS)
+		return FALSE;
+	GetSSApi = (fGetSSApi)GetProcAddress(hSS, "GetSSApi");
+	if (!GetSSApi)
+		return FALSE;
+	// call the function (get struct pointer)
+	pSSApi = GetSSApi();
+	break;
+---------------------------------------------------------------
+
+..."GetSSApi" will return a pointer to a structure with all API
+addresses and information SS provides for the plugins.
+
+There are 2 ways to make your plugin name appear in the SS's
+plugin menu:
+
+1.)
+The dll exports a funtion named "StartSSPlugin". The dll's name
+without extension will be show in the plugin menu. If the user
+clicks on this menu item then the exported funtion will be called.
+
+2.)
+You can also use the "AddPluginFunction" API of SS to add a plugin
+function in SS's menu.
+
+For closer information look at the plugin examples and at
+SSPlugin.h !
+
+Please send me your plugins ;)

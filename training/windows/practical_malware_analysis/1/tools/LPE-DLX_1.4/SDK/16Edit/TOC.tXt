@@ -1,0 +1,29 @@
+Table of contents:
+------------------
+16EditDll.h:
+- BC
+- VC
+
+MS_16Edit.lib:
+- VC
+- MASM
+
+16EditDll.INC:
+- MASM
+- TASM
+
+B_16Edit.lib:
+- BC
+- TASM
+
+HEditDll.pas:
+- Delphi
+
+16EditDll.bas:
+- VB
+
+16Edit.cs
+- C#
+
+16Edit.def:
+- 4 you :)
